@@ -1,0 +1,1 @@
+{"main":"/sys-assign1-s3.raml","name":"system-assign1-s3","classifier":"raml","tags":[],"dependencies":[{"groupId":"ed2688aa-d238-4540-b7de-92dba24d9f28","assetId":"client-id-enforcement-100","version":"1.0.0"},{"groupId":"ed2688aa-d238-4540-b7de-92dba24d9f28","assetId":"oauth-20","version":"1.0.0"}]}

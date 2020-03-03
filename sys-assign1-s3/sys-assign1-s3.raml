@@ -1,0 +1,150 @@
+#%RAML 1.0 
+version: v1
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/a81ef71d-925e-4dd6-b7d0-24e0123622c7/{version} # baseUri: http://sys-assign1-s3.com/{version}
+title: sys-assign1-s3
+traits:
+  -client-id-enforcement: !include exchange_modules/ed2688aa-d238-4540-b7de-92dba24d9f28/client-id-enforcement-100/1.0.0/client-id-enforcement-100.raml 
+uses:
+  msg-lib: library.raml
+/create:
+  post:
+    is:  [-client-id-enforcement]  #adding traits 
+    body:
+      application/json:  #should pass body
+        type: msg-lib.msg-datatype
+        example: !include examples/msg-body-example.raml
+    responses:
+      200:
+        body:
+          application/json:
+            type: msg-lib.success-datatype
+            example: !include examples/success-example.raml
+      400:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/bad-request-example.raml
+      401:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/unauthorized-example.raml
+      405:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/method-not-allowed-example.raml
+/update/{id}:
+    put:
+      is:  [-client-id-enforcement]  #adding traits 
+      body:
+        application/json:
+          type: msg-lib.update-datatype
+          example: !include examples/msg-body-example.raml
+      responses:
+        200:
+          body:
+            application/json:
+              type: msg-lib.success-datatype
+              example: !include examples/success-example.raml
+        400:
+          body:
+            application/json:
+              type: msg-lib.error-datatype
+              example: !include examples/bad-request-example.raml
+        401:
+          body:
+            application/json:
+              type: msg-lib.error-datatype
+              example: !include examples/unauthorized-example.raml
+        405:
+          body:
+            application/json:
+              type: msg-lib.error-datatype
+              example: !include examples/method-not-allowed-example.raml
+      
+
+/get-data:
+  get:
+    is:  [-client-id-enforcement]  #adding traits 
+    # body:
+    #   application/json:
+    #     type: msg-lib.msg-datatype
+    #     example: !include examples/msg-body-example.raml
+    responses:
+      200:
+        body:
+          application/json:
+            type: msg-lib.msg-datatype
+            example: !include examples/msg-body-example.raml
+      400:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/bad-request-example.raml
+      401:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/unauthorized-example.raml
+      405:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/method-not-allowed-example.raml
+  /{id}:
+    get:
+      is:  [-client-id-enforcement]  #adding traits 
+      # body:
+      #   application/json:
+      #     type: msg-lib.msg-datatype
+      #     example: !include examples/msg-body-example.raml
+      responses:
+        200:
+          body:
+            application/json:
+              type: msg-lib.msg-datatype
+              example: !include examples/msg-body-example.raml
+        400:
+          body:
+            application/json:
+              type: msg-lib.error-datatype
+              example: !include examples/bad-request-example.raml
+        401:
+          body:
+            application/json:
+              type: msg-lib.error-datatype
+              example: !include examples/unauthorized-example.raml
+        405:
+          body:
+            application/json:
+              type: msg-lib.error-datatype
+              example: !include examples/method-not-allowed-example.raml
+/remove/{id}:
+  delete:
+    is:  [-client-id-enforcement]  #adding traits 
+    responses:
+      200:
+        body:
+          application/json:
+            type: msg-lib.success-datatype
+            example: !include examples/success-example.raml
+      400:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/bad-request-example.raml
+      401:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/unauthorized-example.raml
+      405:
+        body:
+          application/json:
+            type: msg-lib.error-datatype
+            example: !include examples/method-not-allowed-example.raml
+
+
+
+          
