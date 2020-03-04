@@ -2,6 +2,12 @@
 version: v1
 baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/a81ef71d-925e-4dd6-b7d0-24e0123622c7/{version} # baseUri: http://sys-assign1-s3.com/{version}
 title: sys-assign1-s3
+#by default media type,if nothing is specified then body is by default application/json
+mediaType:    
+  - application/json
+protocols: #protcols
+  - HTTPS
+  - HTTP
 traits:
   -client-id-enforcement: !include exchange_modules/ed2688aa-d238-4540-b7de-92dba24d9f28/client-id-enforcement-100/1.0.0/client-id-enforcement-100.raml 
 uses:
@@ -19,12 +25,10 @@ securedBy: [oauth]
     responses:
       200:
         body:
-          application/json:
             type: msg-lib.success-datatype
             example: !include examples/success-example.raml
       400:
         body:
-          application/json:
             type: msg-lib.error-datatype
             example: !include examples/bad-request-example.raml
       401:
