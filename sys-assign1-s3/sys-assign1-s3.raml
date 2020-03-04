@@ -43,7 +43,10 @@ securedBy: [oauth]
             example: !include examples/method-not-allowed-example.raml
 /update/{id}:
     put:
-      is:  [-client-id-enforcement]  #adding traits 
+      is:  [-client-id-enforcement]  #adding traits
+      queryParameters:
+      queryvariable:
+        required: true
       body:
         application/json:
           type: msg-lib.update-datatype
